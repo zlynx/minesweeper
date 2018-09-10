@@ -1,0 +1,19 @@
+#ifndef ZLYNX_MINESWEEPER_GAME
+#define ZLYNX_MINESWEEPER_GAME
+
+#include "options"
+
+namespace zlynx { namespace minesweeper {
+
+class Game {
+public:
+	Game(const Options &options);
+	~Game();
+
+	bool is_running();
+	void tick();
+};
+
+}}
+
+#endif

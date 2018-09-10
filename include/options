@@ -1,0 +1,25 @@
+#ifndef ZLYNX_MINESWEEPER_OPTIONS
+#define ZLYNX_MINESWEEPER_OPTIONS
+
+#include <cstddef>
+
+namespace zlynx { namespace minesweeper {
+
+class Options {
+	private:
+	size_t width, height;
+
+	public:
+	Options(): width(20), height(20)
+	{}
+};
+
+inline
+Options get_game_options() {
+	Options options;
+	return options;
+}
+
+}}
+
+#endif
