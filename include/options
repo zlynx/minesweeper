@@ -7,11 +7,18 @@ namespace zlynx { namespace minesweeper {
 
 class Options {
 	private:
-	size_t width, height;
+	size_t m_width, m_height;
+	size_t m_mines;
 
 	public:
-	Options(): width(20), height(20)
+	Options():
+		m_width(20), m_height(10),
+		m_mines(20)
 	{}
+
+	size_t width() const { return m_width; }
+	size_t height() const { return m_height; }
+	size_t mines() const { return m_mines; }
 };
 
 inline

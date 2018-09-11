@@ -14,7 +14,6 @@ int main() {
 	while( game->is_running() ) {
 		game->tick();
 	}
-	Game g2(*game);
 	// Exit the game
 	return 0;
 }
