@@ -13,7 +13,7 @@ namespace zlynx { namespace minesweeper {
 
 	class Board {
 	public:
-		enum {
+		enum : uint8_t {
 			HIDDEN_BIT = 0x80,
 			HIDDEN_MASK = 0x7F,
 
