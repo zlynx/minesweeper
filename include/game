@@ -2,6 +2,8 @@
 #define ZLYNX_MINESWEEPER_GAME
 
 #include <memory>
+#include <string>
+#include <tuple>
 #include "options"
 
 namespace zlynx { namespace minesweeper {
@@ -25,6 +27,7 @@ private:
 
 	void render();
 	void inputs();
+	std::tuple<size_t, size_t, bool> parse_location(const std::string& line);
 };
 
 }}
