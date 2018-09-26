@@ -1,0 +1,58 @@
+#ifndef ZLYNX_MINESWEEPER_BOARD
+#define ZLYNX_MINESWEEPER_BOARD
+
+#include <vector>
+
+namespace zlynx { namespace minesweeper {
+	class Board {
+	public:
+		enum : uint8_t {
+			HIDDEN_BIT = 0x80,
+			HIDDEN_MASK = 0x7F,
+
+			CLEAR = ' ',
+			MINE = 'X',
+			EXPLOSION = '*',
+			UNKNOWN = '.',
+			HIDDEN_CLEAR = CLEAR|HIDDEN_BIT,
+			HIDDEN_MINE = MINE|HIDDEN_BIT,
+		};
+
+		Board(size_t width,  size_t height, size_t mines);
+		~Board();
+
+		uint8_t get_hidden(size_t x, size_t y) const {
+			return m_items.at( vector_position(x, y) );
+		}
+		uint8_t get(size_t x, size_t y) const {
+			uint8_t r = get_hidden(x, y);
+			return (r&HIDDEN_BIT) ? UNKNOWN : r;
+		}
+		void set(size_t x, size_t y, uint8_t val) {
+			m_items.at( vector_position(x, y) ) = val;
+		}
+		size_t width() const { return m_width; }
+		size_t height() const {  return m_height; }
+
+		static bool is_mine(uint8_t val) {
+			return (val & HIDDEN_MASK) == MINE;
+		}
+
+		size_t count_mines(size_t x, size_t y) const;
+
+		void reveal(size_t x, size_t y);
+		void reveal_all();
+	private:
+		size_t m_width, m_height;
+		size_t m_mines;
+		std::vector<uint8_t> m_items;
+
+		size_t vector_position(size_t x, size_t y) const {
+			return (y)*(m_width+2) + (x);
+		}
+
+		void distribute_mines();
+	};
+}}
+
+#endif
