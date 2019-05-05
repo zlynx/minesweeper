@@ -19,7 +19,7 @@ namespace zlynx { namespace minesweeper {
 	Game::~Game() {
 	}
 
-	bool Game::is_running() {
+	bool Game::is_running() const {
 		return m_running;
 	}
 

@@ -26,7 +26,7 @@ namespace zlynx { namespace minesweeper {
 		}
 		uint8_t get(size_t x, size_t y) const {
 			uint8_t r = get_hidden(x, y);
-			return (r&HIDDEN_BIT) ? UNKNOWN : r;
+			return (r&HIDDEN_BIT) ? (uint8_t)UNKNOWN : r;
 		}
 		void set(size_t x, size_t y, uint8_t val) {
 			m_items.at( vector_position(x, y) ) = val;
